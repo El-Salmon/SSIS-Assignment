@@ -9,7 +9,7 @@
 6. Insert the remaining new entries.
 7. The data cleaning and cast is handled within the Update and insert itself.
 
-##Query for creating the Staging table
+## Query for creating the Staging table
  create table input_staging 
 (
 Customer_Name	varchar(255) not null,
@@ -26,7 +26,7 @@ Active_Customer char(1),
 PRIMARY KEY (Customer_ID)
 );
 
-##Query for creating the individual tables
+## Query for creating the individual tables
 DECLARE @TableName NVARCHAR(MAX);
 SET @TableName = 'Final_Table_' + CAST(? AS NVARCHAR(MAX)); --? will be replaced by the country name
 
@@ -49,6 +49,6 @@ days_since_last_consulted int,
 PRIMARY KEY (Customer_ID))');
 END
 
-##additional DERIVED COLUMNS
+## Additional DERIVED COLUMNS
 1. Age = DATEDIFF(year,Date_of_Birth,GETDATE()) --difference between the date of birth and current date in years
 2. days_since_last_consulted = DATEDIFF(day,Last_Consulted_Date ,GETDATE()) > 30 then  1 else 0 end --if the difference between the last consultation date and current date is >30 then flag as 1 else 0
