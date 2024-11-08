@@ -1,6 +1,7 @@
 # Integration Services Project1
 
-##Method
+## Method
+
 1. Truncate the Staging table
 2. Import the entire data in the stagging table
 3. Run a script to fetch the list of countries in an object variable.
@@ -10,7 +11,9 @@
 7. The data cleaning and cast is handled within the Update and insert itself.
 
 ## Query for creating the Staging table
- create table input_staging 
+
+```SQL SERVER
+create table input_staging 
 (
 Customer_Name	varchar(255) not null,
 Customer_ID	varchar(18) not null,
@@ -25,8 +28,11 @@ Date_of_Birth	varchar(50),
 Active_Customer char(1),
 PRIMARY KEY (Customer_ID)
 );
+```
 
 ## Query for creating the individual tables
+
+```SQL SERVER
 DECLARE @TableName NVARCHAR(MAX);
 SET @TableName = 'Final_Table_' + CAST(? AS NVARCHAR(MAX)); --? will be replaced by the country name
 
@@ -48,7 +54,9 @@ age int,
 days_since_last_consulted int,
 PRIMARY KEY (Customer_ID))');
 END
+```
 
 ## Additional DERIVED COLUMNS
+
 1. Age = DATEDIFF(year,Date_of_Birth,GETDATE()) --difference between the date of birth and current date in years
 2. days_since_last_consulted = DATEDIFF(day,Last_Consulted_Date ,GETDATE()) > 30 then  1 else 0 end --if the difference between the last consultation date and current date is >30 then flag as 1 else 0
