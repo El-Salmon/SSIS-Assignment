@@ -9,7 +9,7 @@
 6. Insert the remaining new entries.
 7. The data cleaning and cast is handled within the Update and insert itself.
 
- ##Query for creating the Staging table
+##Query for creating the Staging table
  create table input_staging 
 (
 Customer_Name	varchar(255) not null,
@@ -26,7 +26,7 @@ Active_Customer char(1),
 PRIMARY KEY (Customer_ID)
 );
 
- ##Query for creating the individual tables
+##Query for creating the individual tables
 DECLARE @TableName NVARCHAR(MAX);
 SET @TableName = 'Final_Table_' + CAST(? AS NVARCHAR(MAX)); --? will be replaced by the country name
 
